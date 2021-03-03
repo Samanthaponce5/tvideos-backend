@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import Data from './data.js'
 import Videos from './dbModel.js'
+import Cors from 'cors'
 
 
 // app config
@@ -11,11 +12,7 @@ const port = process.env.PORT || 9000;
 // middlewares
 app.use(express.json())
 
-app.use(( req,res,next)=>{
-    res.setHeaders('Access-Contol-Allow-Origin', '*'),
-    res.setHeaders('Access-Control-Allow-Headers', '*')
-    next()
-})
+app.use(Cors())
 
 // DB config
 const connection_url = 'mongodb+srv://admin:QsSsH27Y92USwfdl@cluster0.jbmgx.mongodb.net/tiktok?retryWrites=true&w=majority'
